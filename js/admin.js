@@ -1,9 +1,8 @@
 import {
   camposRequeridos,
   validarGeneral,
-  validarGeneral,
   validarNumeros,
-  validarURL,
+  validarUrl,
 } from "./validaciones";
 
 import { Producto } from "./productClass";
@@ -13,16 +12,19 @@ let campoCodigo = document.getElementById("codigo");
 let campoProducto = document.getElementById("producto");
 let campoDescripcion = document.getElementById("descripcion");
 let campoCantidad = document.getElementById("cantidad");
-let campoURL = document.getElementById("URL");
+let campoUrl = document.getElementById("url");
 let formProducto = document.getElementById("formProducto");
 
-let productoExistente = false; //variable bandera o boolana si el producoto existete es falso quiero crear y si es true quiero modificarlo.
+ //variable bandera o boolana si el producoto existete es falso quiero crear y si es true quiero modificarlo.
+let productoExistente = false;
+
 
 
 //Si hay productos en localStorage quiero guardarlos en listaProductuos si no que sea un array vacio
 let listaProductos = JSON.parse(localStorage.getItem('arrayProductosKey')) || [];
 
 //asociar un evento a cada elemento obtenido
+
 
 campoCodigo.addEventListener("blur", (input) => {
   console.log("desde Codigo");
@@ -40,7 +42,7 @@ campoCodigo.addEventListener("blur", (input) => {
 
 campoProducto.addEventListener("blur", () => {
   console.log("desde Producto");
-  camposRequeridos();
+  camposRequeridos(campoProducto);
   if (input.value.length > 0) {
     console.log("aqui ta todo bien");
     input.className = "form-control is-valid";
@@ -54,7 +56,7 @@ campoProducto.addEventListener("blur", () => {
 
 campoDescripcion.addEventListener("blur", () => {
   console.log("desde Descriptcion");
-  camposRequeridos();
+  camposRequeridos(campoDescripcion);
   if (input.value.length > 0) {
     console.log("aqui ta todo bien");
     input.className = "form-control is-valid";
@@ -68,7 +70,7 @@ campoDescripcion.addEventListener("blur", () => {
 
 campoCantidad.addEventListener("blur", () => {
   console.log("desde Cantidad");
-  camposRequeridos();
+  validarNumeros(campoCantidad);
   if (input.value.length > 0) {
     console.log("aqui ta todo bien");
     input.className = "form-control is-valid";
@@ -80,9 +82,9 @@ campoCantidad.addEventListener("blur", () => {
   }
 });
 
-campoURL.addEventListener("blur", () => {
+campoUrl.addEventListener("blur", () => {
   console.log("desde URL");
-  camposRequeridos();
+  validarUrl(campoUrl);
   if (input.value.length > 0) {
     console.log("aqui ta todo bien");
     input.className = "form-control is-valid";
@@ -110,7 +112,7 @@ function guardarProducto(e) {
       campoProducto,
       campoDescripcion,
       campoCantidad,
-      campoURL
+      campoUrl
     )
   ) {
     console.log("los datos correctos listos para enviar");
@@ -131,7 +133,7 @@ function cadaProducto() {
     campoProducto.value,
     campoDescripcion.value,
     campoCantidad.value,
-    campoURL.value
+    campoUrl.value
   );
   console.log(prodcutoNuevo);
   listaProductos.push(prodcutoNuevo);
@@ -158,7 +160,7 @@ function limpiarFormulario() {
   campoProducto.className = "form-contro";
   campoDescripcion.className = "form-contro";
   campoCantidad.className = "form-contro";
-  campoURL.className = "form-contro";
+  campoUrl.className = "form-contro";
   //reseteamos el estado de la variable bandera
   productoExistente = false;
 }
