@@ -1,13 +1,9 @@
 //validaciones
 export const camposRequeridos = (input) => {
-  console.log("desde campos requeridos");
-  console.log(input.value);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
+  if (input.value.trim()?.length > 0) {
     input.className = "form-control is-valid";
     return true;
   } else {
-    console.log("aqui muestro el error");
     input.className = "form-control is-invalid";
     return false;
   }
@@ -56,11 +52,9 @@ export const validarGeneral = (
     validarNumeros(campoCantidad) &&
     validarUrl(campoUrl)
   ) {
-    console.log("validacion correcta todos los datos son correctos");
     alert.className = "alert alert-danger my-3 d-none";
     return true;
   } else {
-    console.log("validacion incorrecta");
     alert.className = "alert alert-danger my-3";
     return false;
   }
@@ -68,4 +62,4 @@ export const validarGeneral = (
 
 //pueden usar export general como el siguiente
 //o anteponer la palabra export en cada definicion de funcion a exportar
-export { validarNumeros, validarGeneral, validarUrl };
+//export { camposRequeridos, validarNumeros, validarUrl, validarGeneral };

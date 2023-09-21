@@ -1,11 +1,11 @@
 import {
   camposRequeridos,
-  validarGeneral,
   validarNumeros,
   validarUrl,
-} from "./validaciones";
+  validarGeneral
+} from './validaciones.js';
 
-import { Producto } from "./productClass";
+import { Producto } from './productClass.js';
 
 //traer los elementos que necesito del html
 let campoCodigo = document.getElementById("codigo");
@@ -27,76 +27,26 @@ let listaProductos = JSON.parse(localStorage.getItem('arrayProductosKey')) || []
 
 
 campoCodigo.addEventListener("blur", (input) => {
-  console.log("desde Codigo");
   camposRequeridos(campoCodigo);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    console.log("aqui muestro el error");
-    input.className = "form-control is-invalid";
-    return false;
-  }
 });
 
 campoProducto.addEventListener("blur", () => {
-  console.log("desde Producto");
   camposRequeridos(campoProducto);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    console.log("aqui muestro el error");
-    input.className = "form-control is-invalid";
-    return false;
-  }
 });
 
 campoDescripcion.addEventListener("blur", () => {
-  console.log("desde Descriptcion");
   camposRequeridos(campoDescripcion);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    console.log("aqui muestro el error");
-    input.className = "form-control is-invalid";
-    return false;
-  }
 });
 
 campoCantidad.addEventListener("blur", () => {
-  console.log("desde Cantidad");
   validarNumeros(campoCantidad);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    console.log("aqui muestro el error");
-    input.className = "form-control is-invalid";
-    return false;
-  }
 });
 
 campoUrl.addEventListener("blur", () => {
-  console.log("desde URL");
   validarUrl(campoUrl);
-  if (input.value.length > 0) {
-    console.log("aqui ta todo bien");
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    console.log("aqui muestro el error");
-    input.className = "form-control is-invalid";
-    return false;
-  }
 });
 
-formProducto.addEventListener("submit", guardarProducto);
+formProducto.addEventListener('submit', guardarProducto);
 
 //llamo a carga inicial: lo tengo productos
 cargaInicial();
@@ -115,7 +65,6 @@ function guardarProducto(e) {
       campoUrl
     )
   ) {
-    console.log("los datos correctos listos para enviar");
     if (!productoExistente) {
       //crear producto
       crearProducto();
@@ -126,7 +75,7 @@ function guardarProducto(e) {
   }
 }
 
-function cadaProducto() {
+function crearProducto() {
   //crear un objeto producto
   let prodcutoNuevo = new Producto(
     campoCodigo.value,
@@ -135,9 +84,8 @@ function cadaProducto() {
     campoCantidad.value,
     campoUrl.value
   );
-  console.log(prodcutoNuevo);
+
   listaProductos.push(prodcutoNuevo);
-  console.log("se agrego el producto con exito");
   //limpiar el formulario
   limpiarFormulario();
   //guardar el array de productos dentro de local storage
@@ -169,15 +117,15 @@ function guardarLocalStorage(){
   localStorage.setItem("arrayProductosKey", JSON.stringify(listaProductos))
 }
 
-function crearFila(){
+function crearFila(producto) {
   let tablaProducto = document.getElementById("tablaProducto");
   //usamos el operador de asignacion por adicion para concatenar con lo que ya tengo de contenido de tabla porducto
   tablaProducto.innerHTML += `<tr>
-  <td>${prudcto.codigo}</td>
-  <td>${prudcto.producto}</td>
-  <td>${prudcto.descripcion}</td>
-  <td>${prudcto.cantidad}</td>
-  <td>${prudcto.url}</td>
+  <td>${producto.codigo}</td>
+  <td>${producto.producto}</td>
+  <td>${producto.descripcion}</td>
+  <td>${producto.cantidad}</td>
+  <td>${producto.url}</td>
   <td>
   <button class="btn btn-warning mb-3 onclick="prepararEdicionProducto()">Editar</button>
   <button class="ben ben-danger mb-3" onclick="borrarProducto()">Eliminar</button>

@@ -1,46 +1,48 @@
-export class Producto{
-    constructor(parametrocodigo, parametroProducto, parametroDescripcion, parametroCantidad, parametroURL){
-        this.codigo = parametrocodigo;
-        this.producto = parametroProducto;
-        this.descripcion = parametroDescripcion;
-        this.cantidad = parametroCantidad;
-        this.url = parametroURL;
-    }
+export class Producto {
+  constructor(
+    parametroCodigo,
+    parametroProducto,
+    parametroDescripcion,
+    parametroCantidad,
+    parametroUrl
+  ) {
+    this.codigo = parametroCodigo;
+    this.producto = parametroProducto;
+    this.descripcion = parametroDescripcion;
+    this.cantidad = parametroCantidad;
+    this.url = parametroUrl;
+  }
 
-    //getter
 
-    get mostrarCodigo(){
-        return this.codigo;
-    }
-    get mostrarProducto(){
-        return this.producto;
-    }
-    get mostrarDescripcion(){
-        return this.descripcion;
-    }
-    get mostrarCantidad(){
-        return this.cantidad;
-    }
-    get mostrarUrl(){
-        return this.url;
-    }
+  get mostrarCodigo() {
+    return this.codigo;
+  }
+  get mostrarProducto() {
+    return this.producto;
+  }
+  get mostrarDescripcion() {
+    return this.descripcion;
+  }
+  get mostrarCantidad() {
+    return this.cantidad;
+  }
+  get mostrarUrl() {
+    return this.url;
+  }
 
-    //setter
-
-    set modificarCodigo(){
-        this.codigo = nuevoCodigo;
-    }
-    set modificarProducto(){
-        this.producto = nuevoProducto;
-    }
-    set modificarDescripcion(){
-        this.descripcion = nuevaDescription;
-    }
-    set modificarCantidad(){
-        this.cantidad = nuevaCantidad;
-    }
-    set modificarUrl(){
-        this.url = nuevaUrl;
-    }
-    
+  set modificarCodigo(nuevoCodigo){
+      this.codigo = nuevoCodigo;
+  }
+  set modificarProducto(nuevoProducto){
+      this.producto = nuevoProducto;
+  }
+  set modificarDescripcion(nuevaDescripcion){
+      this.descripcion = nuevaDescripcion;
+  }
+  set modificarCantidad(nuevaCantidad){
+      this.cantidad = nuevaCantidad;
+  }
+  set modificarUrl(nuevaUrl){
+      this.url = nuevaUrl;
+  }
 }
