@@ -16,9 +16,9 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="index.html">CRUD</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -33,77 +33,123 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Admin</a
-                >
+                <a class="nav-link" href="index.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="admin.html"
+                  >Admin</a
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
+
     <main class="container">
       <section class="my-5">
         <h1 class="display-3 text-center text-primary">
           Administrar productos
         </h1>
         <hr />
-        <form>
+        <form id="formProducto">
           <div class="mb-3">
-            <label for="codigo" class="form-label">Codigo</label>
+            <label for="codigo" class="form-label">Código</label>
             <input
               type="text"
               class="form-control"
               id="codigo"
               placeholder="123"
+              maxlength="3"
+              required
             />
+            <div class="invalid-feedback">Debe ingresar un codigo valido!</div>
           </div>
           <div class="mb-3">
-            <label for="Producto" class="form-label">Producto</label>
+            <label for="producto" class="form-label">Producto</label>
             <input
               type="text"
               class="form-control"
-              id="Producto"
+              id="producto"
               placeholder="Ej: Iron man"
+              maxlength="30"
+              required
             />
           </div>
           <div class="mb-3">
-            <label for="descripcion" class="form-label"
-              >Descripción</label
-            >
+            <label for="descripcion" class="form-label">Descripción</label>
             <textarea
               class="form-control"
               id="descripcion"
               rows="3"
+              maxlength="50"
+              required
             ></textarea>
           </div>
           <div class="mb-3">
-            <label for="Cantidad" class="form-label">Cantidad</label>
+            <label for="cantidad" class="form-label">Cantidad</label>
             <input
               type="text"
               class="form-control"
-              id="Cantidad"
+              id="cantidad"
               placeholder="2"
+              maxlength="3"
+              required
             />
           </div>
           <div class="mb-3">
-            <label for="URL" class="form-label">URL</label>
+            <label for="url" class="form-label">URL</label>
             <input
               type="text"
               class="form-control"
-              id="URL"
+              id="url"
               placeholder="http://127.0.0.1:8000/image.jpg"
+              maxlength="200"
+              required
             />
           </div>
           <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+        <div class="alert alert-danger my-3 d-none" role="alert" id="alert">
+          Debe completar todos los campos requeridos.
+        </div>
+      </section>
+      <section>
+        <h2 class="display-3 text-center">Tabla de Productos</h2>
+        <hr />
+        <button class="btn btn-primary" id="btnNuevo">Nuevo</button>
+        <button class="btn btn-secondary" id="btnDatosPrueba">
+          Caragar datos de prueba
+        </button>
+        <div class="table-resposive">
+          <table class="table my-5">
+            <thead>
+              <tr>
+                <th scope="col">Cod.</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Desc</th>
+                <th scope="col">Cantid</th>
+                <th scope="col">URL</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaProducto"></tbody>
+          </table>
+        </div>
       </section>
     </main>
-    <footer></footer>
+
+    <footer>
+      <section class="container w-100 h-auto">
+        <article class="row">
+          <div class="col-12 text-bg-dark text-center">
+            <p>- &copy; Derechos Reservados -</p>
+            <p>Gustavo E. Aybar - Comision 66i</p>
+          </div>
+        </article>
+      </section>
+    </footer>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/admin.js"></script>
+    <script src="js/admin.js" tyoe="module"></script>
   </body>
 </html>
